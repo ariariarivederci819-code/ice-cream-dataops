@@ -105,7 +105,7 @@ modules:
   - name: ice_cream_api
     location:
       path: modules/bootcamp/ice_cream_api
-      hash: c41a3154
+      hash: b79121ff
     build_variables:
     - key: icapi_ds_external_id
       value: ds_icapi
@@ -148,6 +148,34 @@ modules:
       is_selected: true
       location: modules/bootcamp/ice_cream_api
     resources:
+      auth:
+      - identifier:
+          name: icapi_extractors
+        source:
+          path: /project/workspace/ice-cream-dataops/modules/bootcamp/ice_cream_api/auth/icapi_extractors.Group.yaml
+          hash: c22584bc
+        kind: Group
+      data_models:
+      - identifier:
+          space: icapi_dm_space
+        source:
+          path: /project/workspace/ice-cream-dataops/modules/bootcamp/ice_cream_api/data_models/ice_cream_data_model.space.yaml
+          hash: eca82cc8
+        kind: Space
+      data_sets:
+      - identifier:
+          externalId: ds_icapi
+        source:
+          path: /project/workspace/ice-cream-dataops/modules/bootcamp/ice_cream_api/data_sets/data_sets.DataSet.yaml
+          hash: 117d07d6
+        kind: DataSet
+      extraction_pipelines:
+      - identifier:
+          externalId: ep_icapi_datapoints
+        source:
+          path: /project/workspace/ice-cream-dataops/modules/bootcamp/ice_cream_api/extraction_pipelines/ep_icapi_datapoints.ExtractionPipeline.yaml
+          hash: 1a1814d6
+        kind: ExtractionPipeline
       functions:
       - identifier:
           externalId: icapi_datapoints_extractor
@@ -169,41 +197,6 @@ modules:
           path: /project/workspace/ice-cream-dataops/modules/bootcamp/ice_cream_api/functions/schedules.Schedule.yaml
           hash: 67fa4265
         kind: Schedule
-      auth:
-      - identifier:
-          name: icapi_extractors
-        source:
-          path: /project/workspace/ice-cream-dataops/modules/bootcamp/ice_cream_api/auth/icapi_extractors.Group.yaml
-          hash: c22584bc
-        kind: Group
-      raw:
-      - identifier:
-          dbName: ice-cream-factory-db
-          tableName: assets
-        source:
-          path: /project/workspace/ice-cream-dataops/modules/bootcamp/ice_cream_api/raw/ice-cream-factory-db.Table.yaml
-          hash: fabd2169
-        kind: Table
-      - identifier:
-          dbName: ice-cream-factory-db
-        source:
-          path: /project/workspace/ice-cream-dataops/modules/bootcamp/ice_cream_api/raw/ice-cream-factory-db.Table.yaml
-          hash: de947829
-        kind: Database
-      data_sets:
-      - identifier:
-          externalId: ds_icapi
-        source:
-          path: /project/workspace/ice-cream-dataops/modules/bootcamp/ice_cream_api/data_sets/data_sets.DataSet.yaml
-          hash: 117d07d6
-        kind: DataSet
-      data_models:
-      - identifier:
-          space: icapi_dm_space
-        source:
-          path: /project/workspace/ice-cream-dataops/modules/bootcamp/ice_cream_api/data_models/ice_cream_data_model.space.yaml
-          hash: eca82cc8
-        kind: Space
       hosted_extractors:
       - identifier:
           externalId: ICAPI Assets
@@ -254,6 +247,20 @@ modules:
             Cream Factory API/Source.yaml
           hash: ad7e9d3f
         kind: Source
+      raw:
+      - identifier:
+          dbName: ice-cream-factory-db
+          tableName: assets
+        source:
+          path: /project/workspace/ice-cream-dataops/modules/bootcamp/ice_cream_api/raw/ice-cream-factory-db.Table.yaml
+          hash: fabd2169
+        kind: Table
+      - identifier:
+          dbName: ice-cream-factory-db
+        source:
+          path: /project/workspace/ice-cream-dataops/modules/bootcamp/ice_cream_api/raw/ice-cream-factory-db.Table.yaml
+          hash: de947829
+        kind: Database
       transformations:
       - identifier:
           externalId: contextualize_ts_assets
@@ -279,13 +286,7 @@ modules:
           path: /project/workspace/ice-cream-dataops/modules/bootcamp/ice_cream_api/transformations/create_asset_hierarchy.schedule.yaml
           hash: 45e1dc7b
         kind: Schedule
-      extraction_pipelines:
-      - identifier:
-          externalId: ep_icapi_datapoints
-        source:
-          path: /project/workspace/ice-cream-dataops/modules/bootcamp/ice_cream_api/extraction_pipelines/ep_icapi_datapoints.ExtractionPipeline.yaml
-          hash: 1a1814d6
-        kind: ExtractionPipeline
+      workflows: []
     warning_count: 2
     status: Success
     iteration: 1
